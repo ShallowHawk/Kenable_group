@@ -6,21 +6,17 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/kenable_group/',
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   // 开发服务器配置
   server: {
     host: true,
     port: 5173,
-    open: true
+    open: true,
   },
   // 构建优化配置
   build: {
@@ -32,8 +28,8 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
-      }
+        drop_debugger: true,
+      },
     },
     // 代码分割配置
     rollupOptions: {
@@ -47,7 +43,7 @@ export default defineConfig({
           // 工具库
           utils: ['zod'],
           // 动画库
-          animations: ['gsap']
+          animations: ['gsap'],
         },
         // 文件命名规则
         chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -65,35 +61,29 @@ export default defineConfig({
             return 'assets/css/[name]-[hash].[ext]'
           }
           return 'assets/[ext]/[name]-[hash].[ext]'
-        }
+        },
       },
       // 外部依赖优化
-      external: []
+      external: [],
     },
     // 文件大小警告阈值
     chunkSizeWarningLimit: 1000,
     // 资源内联阈值
-    assetsInlineLimit: 4096
+    assetsInlineLimit: 4096,
   },
   // CSS配置
   css: {
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/scss/variables.scss";`
-      }
-    }
+        additionalData: `@import "@/assets/scss/variables.scss";`,
+      },
+    },
   },
   // 优化依赖
   optimizeDeps: {
-    include: [
-      'vue',
-      'vue-router',
-      '@headlessui/vue',
-      'zod',
-      'gsap'
-    ],
-    exclude: []
+    include: ['vue', 'vue-router', '@headlessui/vue', 'zod', 'gsap'],
+    exclude: [],
   },
   // 静态资源处理
   assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.webp'],
@@ -101,11 +91,11 @@ export default defineConfig({
   preview: {
     host: true,
     port: 4173,
-    open: true
+    open: true,
   },
   // 环境变量配置
   define: {
     __VUE_OPTIONS_API__: false,
-    __VUE_PROD_DEVTOOLS__: false
-  }
+    __VUE_PROD_DEVTOOLS__: false,
+  },
 })
